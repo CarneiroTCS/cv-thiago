@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Thiago Carneiro da Silva — Currículo Interativo</title>
+<meta content="Currículo interativo em formato web (modo terminal, filtro, exportação para PDF)." name="description"/>
+<link href="assets/preview.svg" rel="icon" type="image/svg+xml"/>
+<meta content="Thiago Carneiro da Silva — Currículo Interativo" property="og:title"/>
+<meta content="Currículo interativo em formato web (modo terminal, filtro, tema dark/light e exportação para PDF)." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="assets/preview.svg" property="og:image"/>
+<link href="styles.css?v=92" rel="stylesheet">
+</link></head>
+<body>
+<header class="topbar">
+<div class="brand">
+<div class="logo"><span class="logoCode">{ }</span><span aria-hidden="true" class="logoRam"></span></div>
+<img alt="Foto do candidato" class="avatar" loading="lazy" src="assets/avatar.webp"/>
+<div>
+<h1 id="name">Thiago Carneiro da Silva</h1>
+<p class="subtitle">
+<span class="typed" id="headlineTyped"></span>
+<span aria-hidden="true" class="caret">▍</span>
+</p>
+<p class="ramTag" id="ramTag">Carneiro Mode: <span class="ramPulse">ON</span></p>
+</div>
+</div>
+<div class="actions">
+<button class="btn" data-action="theme" id="btnTheme">Tema (Dark/ARGB/Light)</button>
+<button class="btn" data-action="theme" id="btnArgb" style="display:none !important">Tema (Dark/ARGB/Light)</button>
+<button class="btn" data-action="privacy" id="btnPrivacy">Privacidade</button>
+<button class="btn btn-primary" data-action="terminal" id="btnTerminal">Modo Terminal</button>
+<button class="btn" data-action="game" id="btnGame">Mini Game</button>
+<button class="btn" data-action="mode" id="btnMode">Mudar modo</button>
+<button class="btn" data-action="print" id="btnPrint">Exportar PDF</button>
+<button class="btn" data-action="json" id="btnJson">Baixar JSON</button>
+</div>
+</header>
+<main class="container">
+<section class="card">
+<h2>Contato</h2>
+<div class="grid2">
+<div>
+<p class="muted">E-mail</p>
+<p><button class="linklike" data-copy="eltenchu@hotmail.com">eltenchu@hotmail.com</button></p>
+</div>
+<div class="private">
+<p class="muted">Telefone</p>
+<p><button class="linklike" data-copy="(27) 99815-3902">(27) 99815-3902</button></p>
+</div>
+<div class="private">
+<p class="muted">Local</p>
+<p>Vila Velha / Serra — ES</p>
+</div>
+<div>
+<p class="muted">LinkedIn</p>
+<p><a class="linklike" href="https://www.linkedin.com/in/thiago-c-56135b1a8" id="linkedinLink" rel="noreferrer" target="_blank">linkedin.com/in/thiago-c-56135b1a8</a></p>
+</div>
+<div>
+<p class="muted">Idiomas</p>
+<p>Português (Nativo) • Inglês (Intermediário / Limited Working)</p>
+</div>
+</div>
+<p class="hint">Dica: clique para copiar contato. Use “Privacidade” antes de compartilhar a tela.</p>
+</section>
+<section class="card" id="secSummary">
+<h2>Resumo</h2>
+<p id="summary"></p>
+<div class="chips" id="chips"></div>
+</section>
+<section class="card" id="secExperience">
+<div class="row">
+<h2>Experiências</h2>
+<input class="input" id="expFilter" placeholder="Filtrar por palavra-chave (ex.: Power BI, indicadores, custos, naval, documentos)"/>
+</div>
+<div id="experience"></div>
+</section>
+<section class="card" id="secEducation">
+<h2>Formação</h2>
+<div id="education"></div>
+</section>
+<section class="card" id="secCourses">
+<h2>Cursos e Certificações</h2>
+<div id="courses"></div>
+</section>
+<section class="card" id="secAchievements">
+<div class="row">
+<h2>Achievements</h2>
+<button class="btn btn-xs" id="btnResetProgress">Resetar progresso</button>
+</div>
+<p class="muted">Badges desbloqueados conforme você explora o currículo (terminal, mini game, skills).</p>
+<div class="achievementsGrid" id="achievementsGrid"></div>
+</section>
+<section class="card" id="secSkillTree">
+<h2>Skill Tree</h2>
+<p class="muted">Toque nos nós para ativar. No celular, funciona bem com toque.</p>
+<div class="skillTree">
+<button class="node" data-skill="Power BI" data-tier="1">Power BI</button>
+<button class="node" data-skill="Power Query" data-tier="1">Power Query</button>
+<button class="node" data-skill="Excel/Planilhas" data-tier="2">Excel</button>
+<button class="node" data-skill="KPIs" data-tier="2">KPIs</button>
+<button class="node" data-skill="SLA" data-tier="3">SLA</button>
+<button class="node" data-skill="Custos" data-tier="3">Custos</button>
+<button class="node" data-skill="Produtividade" data-tier="4">Produtividade</button>
+<button class="node" data-skill="Absenteísmo/HE" data-tier="4">Absenteísmo/HE</button>
+<button class="node" data-skill="Python (básico)" data-tier="5">Python</button>
+<button class="node" data-skill="Documentação" data-tier="5">Documentação</button>
+</div>
+<p class="hint" id="skillTreeHint">Dica: ative 5 nós para desbloquear um achievement.</p>
+</section>
+<footer class="footer">
+<p class="muted">
+        Feito em HTML/CSS/JS — versão web + impressão em PDF (sem travar ATS: envie também um PDF clássico quando necessário).
+      </p>
+</footer>
+</main>
+<!-- Terminal Overlay -->
+<div aria-hidden="true" class="terminalOverlay" id="terminalOverlay">
+<div class="terminal">
+<div class="terminalBar">
+<span>terminal@thiago:~</span>
+<button class="btn btn-xs" id="btnTerminalClose">Fechar</button>
+</div>
+<pre class="terminalLog" id="terminalLog"></pre>
+<div class="terminalInputRow">
+<span class="prompt">$</span>
+<input autocomplete="off" class="terminalInput" id="terminalInput" placeholder="Digite: help, about, skills, exp, edu, certs, copy email, print" spellcheck="false"/>
+</div>
+</div>
+</div>
+<script src="app.js?v=92"></script>
+<!-- Mini Game Overlay -->
+<div aria-hidden="true" class="gameOverlay" id="gameOverlay">
+<div class="gameWrap">
+<div class="gameBar">
+<span>CV Quest — colete os itens para navegar</span>
+<div class="gameBarRight">
+<span class="gameStatus" id="gameStatus">0/3</span>
+<button class="btn btn-xs" id="btnGameClose">Fechar</button>
+</div>
+</div>
+<div class="gameBody">
+<canvas height="360" id="gameCanvas" width="360"></canvas>
+<div class="gameHelp">
+<p class="muted"><span class="kbd">WASD</span> / <span class="kbd">↑↓←→</span> no PC. No celular, use o controle.</p>
+<p class="muted">Itens: <b>EXP</b> (Experiências), <b>EDU</b> (Formação), <b>SKL</b> (Skills).</p>
+<p class="hint" id="gameHint">Dica: ao coletar um item, eu te levo para a seção correspondente.</p>
+</div>
+<div aria-label="Controles para celular" class="dpad">
+<button class="dpadBtn" data-dir="up">▲</button>
+<div class="dpadMid">
+<button class="dpadBtn" data-dir="left">◀</button>
+<button class="dpadBtn dpadCenter" data-dir="pause">⏸</button>
+<button class="dpadBtn" data-dir="right">▶</button>
+</div>
+<button class="dpadBtn" data-dir="down">▼</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Recruiter Onboarding -->
+<div aria-hidden="true" class="onboardingOverlay" id="onboardingOverlay">
+<div aria-labelledby="onboardingTitle" aria-modal="true" class="onboardingModal" role="dialog">
+<h3 id="onboardingTitle">Bem-vindo</h3>
+<p class="muted">
+        Este currículo tem um modo interativo (mini game, achievements e skill tree).
+        Você prefere participar ou apenas visualizar o currículo?
+      </p>
+<div class="onboardingBtns">
+<button class="btn" id="btnJustView">Só ver o currículo</button>
+<button class="btn btn-primary" id="btnPlay">Participar (modo interativo)</button>
+</div>
+<label class="onboardingRemember">
+<input checked="" id="chkRemember" type="checkbox"/>
+        Lembrar minha escolha neste navegador
+      </label>
+<p class="hint">Você pode mudar a qualquer momento: clique em <b>Mini Game</b> ou navegue normalmente.</p>
+</div>
+</div>
+<script crossorigin="anonymous" referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</body>
+</html>
